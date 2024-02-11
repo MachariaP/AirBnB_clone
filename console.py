@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """handles the EOF character"""
 
-        print("")
+        print()
         return True
 
     def do_create(self, arg):
