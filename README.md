@@ -1,123 +1,46 @@
-# HBnB
+Sure, here's the corrected markdown with the center-aligned and larger heading for "HBnB":
+
+```markdown
+# <p align="center"><font size="+3">HBnB</font></p>
 
 AirBnB clone.
 
 ----------
 
-## [](https://github.com/MachariaP/AirBnB_clone/blob/master/README.md#description-house)Description 🏠
+## Description 🏠
 
 HBnB is a complete web application, integrating database storage, a back-end API, and front-end interfacing in a clone of AirBnB.
 
 The project currently only implements the back-end console.
 
-## [](https://github.com/MachariaP/AirBnB_clone/blob/master/README.md#classes-cl)Classes 🆑
+## Classes 🆑
 
 HBnB utilizes the following classes:
 
-BaseModel
+| Class       | Description               | Attributes                    | Methods                           |
+|-------------|---------------------------|-------------------------------|-----------------------------------|
+| BaseModel   |                           | id<br>created_at<br>updated_at | save<br>to_dict                  |
+| FileStorage |                           |                               | all<br>new<br>save<br>reload     |
+| User        | Inherits from BaseModel    | email<br>password<br>first_name<br>last_name |                                   |
+| State       | Inherits from BaseModel    |                               |                                   |
+| City        | Inherits from BaseModel    |                               |                                   |
+| Amenity     | Inherits from BaseModel    |                               |                                   |
+| Place       | Inherits from BaseModel    |                               |                                   |
+| Review      | Inherits from BaseModel    |                               |                                   |
 
-FileStorage
+## Storage 🛄
 
-User
+The above classes are handled by the abstracted storage engine defined in the [FileStorage](https://github.com/MachariaP/AirBnB_clone/blob/master/models/engine/file_storage.py) class.
 
-State
+Every time the backend is initialized, HBnB instantiates an instance of `FileStorage` called `storage`. The `storage` object is loaded/re-loaded from any class instances stored in the JSON file `file.json`. As class instances are created, updated, or deleted, the `storage` object is used to register corresponding changes in the `file.json`.
 
-City
+## Console 💻
 
-Amenity
+The console is a command line interpreter that permits management of the backend of HBnB. It can be used to handle and manipulate all classes utilized by the application (achieved by calls on the `storage` object defined above).
 
-Place
+### Using the Console
 
-Review
-
-**PUBLIC INSTANCE ATTRIBUTES**
-
-`id`  
-`created_at`  
-`updated_at`
-
-Inherits from  `BaseModel`
-
-Inherits from  `BaseModel`
-
-Inherits from  `BaseModel`
-
-Inherits from  `BaseModel`
-
-Inherits from  `BaseModel`
-
-Inherits from  `BaseModel`
-
-**PUBLIC INSTANCE METHODS**
-
-`save`  
-`to_dict`
-
-`all`  
-`new`  
-`save`  
-`reload`
-
-""
-
-""
-
-""
-
-""
-
-""
-
-""
-
-**PUBLIC CLASS ATTRIBUTES**
-
-`email`  
-`password`  
-`first_name`  
-`last_name`
-
-`name`
-
-`state_id`  
-`name`
-
-`name`
-
-`city_id`  
-`user_id`  
-`name`  
-`description`  
-`number_rooms`  
-`number_bathrooms`  
-`max_guest`  
-`price_by_night`  
-`latitude`  
-`longitude`  
-`amenity_ids`
-
-`place_id`  
-`user_id`  
-`text`
-
-**PRIVATE CLASS ATTRIBUTES**
-
-`file_path`  
-`objects`
-
-## [](https://github.com/MachariaP/AirBnB_clone/blob/master/README.md#storage-baggage_claim)Storage 🛄
-
-The above classes are handled by the abstracted storage engine defined in the  [FileStorage](https://github.com/MachariaP/AirBnB_clone/blob/master/models/engine/file_storage.py)  class.
-
-Every time the backend is initialized, HBnB instantiates an instance of  `FileStorage`  called  `storage`. The  `storage`  object is loaded/re-loaded from any class instances stored in the JSON file  `file.json`. As class instances are created, updated, or deleted, the  `storage`  object is used to register corresponding changes in the  `file.json`.
-
-## [](https://github.com/MachariaP/AirBnB_clone/blob/master/README.md#console-computer)Console 💻
-
-The console is a command line interpreter that permits management of the backend of HBnB. It can be used to handle and manipulate all classes utilized by the application (achieved by calls on the  `storage`  object defined above).
-
-### [](https://github.com/MachariaP/AirBnB_clone/blob/master/README.md#using-the-console)Using the Console
-
-The HBnB console can be run both interactively and non-interactively. To run the console in non-interactive mode, pipe any command(s) into an execution of the file  `console.py`  at the command line.
+The HBnB console can be run both interactively and non-interactively. To run the console in non-interactive mode, pipe any command(s) into an execution of the file `console.py` at the command line.
 
 ```
 $ echo "help" | ./console.py
@@ -131,7 +54,7 @@ $
 
 ```
 
-Alternatively, to use the HBnB console in interactive mode, run the file  `console.py`  by itself:
+Alternatively, to use the HBnB console in interactive mode, run the file `console.py` by itself:
 
 ```
 $ ./console.py
@@ -146,7 +69,7 @@ $ ./console.py
 
 ```
 
-To quit the console, enter the command  `quit`, or input an EOF signal (`ctrl-D`).
+To quit the console, enter the command `quit`, or input an EOF signal (ctrl-D).
 
 ```
 $ ./console.py
@@ -162,14 +85,14 @@ $
 
 ```
 
-### [](https://github.com/MachariaP/AirBnB_clone/blob/master/README.md#console-commands)Console Commands
+### Console Commands
 
 The HBnB console supports the following commands:
 
--   **create**
-    -   Usage:  `create <class>`
+- **create**
+  - Usage: `create <class>`
 
-Creates a new instance of a given class. The class' ID is printed and the instance is saved to the file  `file.json`.
+Creates a new instance of a given class. The class' ID is printed and the instance is saved to the file `file.json`.
 
 ```
 $ ./console.py
@@ -183,8 +106,8 @@ Model", "id": "119be863-6fe5-437e-a180-b9892e8746b8"}}
 
 ```
 
--   **show**
-    -   Usage:  `show <class> <id>`  or  `<class>.show(<id>)`
+- **show**
+  - Usage: `show <class> <id>` or `<class>.show(<id>)`
 
 Prints the string representation of a class instance based on a given id.
 
@@ -198,7 +121,9 @@ $ ./console.py
 c3240b29f46', 'created_at': datetime.datetime(2019, 2, 17, 21, 34, 3, 635828), 
 'updated_at': datetime.datetime(2019, 2, 17, 21, 34, 3, 635828)}
 (hbnb) 
-(hbnb) User.show(1e32232d-5a63-4d92-8092-ac3240b29f46)
+(hbnb) User.show(1e32232d-5a63-4d92-8092-ac3240
+
+b29f46)
 [User] (1e32232d-5a63-4d92-8092-ac3240b29f46) {'id': '1e32232d-5a63-4d92-8092-a
 c3240b29f46', 'created_at': datetime.datetime(2019, 2, 17, 21, 34, 3, 635828), 
 'updated_at': datetime.datetime(2019, 2, 17, 21, 34, 3, 635828)}
@@ -206,10 +131,10 @@ c3240b29f46', 'created_at': datetime.datetime(2019, 2, 17, 21, 34, 3, 635828),
 
 ```
 
--   **destroy**
-    -   Usage:  `destroy <class> <id>`  or  `<class>.destroy(<id>)`
+- **destroy**
+  - Usage: `destroy <class> <id>` or `<class>.destroy(<id>)`
 
-Deletes a class instance based on a given id. The storage file  `file.json`  is updated accordingly.
+Deletes a class instance based on a given id. The storage file `file.json` is updated accordingly.
 
 ```
 $ ./console.py
@@ -226,8 +151,8 @@ $ cat file.json ; echo ""
 
 ```
 
--   **all**
-    -   Usage:  `all`  or  `all <class>`  or  `<class>.all()`
+- **all**
+  - Usage: `all` or `all <class>` or `<class>.all()`
 
 Prints the string representations of all instances of a given class. If no class name is provided, the command prints all instances of every class.
 
@@ -268,15 +193,17 @@ del] (450490fd-344e-47cf-8342-126244c2ba99) {'updated_at': datetime.datetime(20
 c3-f4bf-425e-b1d4-165f52c6ff81) {'updated_at': datetime.datetime(2019, 2, 17, 2
 1, 44, 15, 974608), 'created_at': datetime.datetime(2019, 2, 17, 21, 44, 15, 97
 4608), 'id': 'b742dbc3-f4bf-425e-b1d4-165f52c6ff81'}", "[BaseModel] (fce2124c-8
-537-489b-956e-22da455cbee8) {'updated_at': datetime.datetime(2019, 2, 17, 21, 4
+537-489b-956e-22da455cbee8) {'updated_at': datetime.datetime(2019, 
+
+2, 17, 21, 4
 3, 56, 899348), 'created_at': datetime.datetime(2019, 2, 17, 21, 43, 56, 899348
 ), 'id': 'fce2124c-8537-489b-956e-22da455cbee8'}"]
 (hbnb) 
 
 ```
 
--   **count**
-    -   Usage:  `count <class>`  or  `<class>.count()`
+- **count**
+  - Usage: `count <class>` or `<class>.count()`
 
 Retrieves the number of instances of a given class.
 
@@ -297,10 +224,10 @@ aa229cbb-5b19-4c32-8562-f90a3437d301
 
 ```
 
--   **update**
-    -   Usage:  `update <class> <id> <attribute name> "<attribute value>"`  or  `<class>.update(<id>, <attribute name>, <attribute value>)`  or  `<class>.update( <id>, <attribute dictionary>)`.
+- **update**
+  - Usage: `update <class> <id> <attribute name> "<attribute value>"` or `<class>.update(<id>, <attribute name>, <attribute value>)` or `<class>.update( <id>, <attribute dictionary>)`.
 
-Updates a class instance based on a given id with a given key/value attribute pair or dictionary of attribute pairs. If  `update`  is called with a single key/value attribute pair, only "simple" attributes can be updated (ie. not  `id`,  `created_at`, and  `updated_at`). However, any attribute can be updated by providing a dictionary.
+Updates a class instance based on a given id with a given key/value attribute pair or dictionary of attribute pairs. If `update` is called with a single key/value attribute pair, only "simple" attributes can be updated (ie. not `id`, `created_at`, and `updated_at`). However, any attribute can be updated by providing a dictionary.
 
 ```
 $ ./console.py
@@ -333,9 +260,9 @@ m', 'first_name': 'Holberton', 'updated_at': datetime.datetime(2019, 2, 17, 21,
 
 ```
 
-## [](https://github.com/MachariaP/AirBnB_clone/blob/master/README.md#testing-straight_ruler)Testing 📏
+## Testing 📏
 
-Unittests for the HolbertonBnB project are defined in the  [tests](https://github.com/MachariaP/AirBnB_clone/blob/master/tests)  folder. To run the entire test suite simultaneously, execute the following command:
+Unittests for the HolbertonBnB project are defined in the [tests](https://github.com/MachariaP/AirBnB_clone/blob/master/tests) folder. To run the entire test suite simultaneously, execute the following command:
 
 ```
 $ python3 unittest -m discover tests
@@ -349,7 +276,10 @@ $ python3 unittest -m tests/test_console.py
 
 ```
 
-## [](https://github.com/MachariaP/AirBnB_clone/blob/master/README.md#authors-black_nib)Authors ✒️
+## Authors ✒️
 
--   **Phinehas Macharia**  <[MachariaP](https://github.com/MachariaP)>
--   **Dinar Wanjiru**  <[Dinarwanjiru](https://github.com/Dinarwanjiru)>
+- **Phinehas Macharia** <[MachariaP](https://github.com/MachariaP)>
+- **Dinar Wanjiru** <[Dinarwanjiru](https://github.com/Dinarwanjiru)>
+```
+
+This markdown should display the HBnB heading centered and larger, as well as correct the formatting of the tables and other sections.
