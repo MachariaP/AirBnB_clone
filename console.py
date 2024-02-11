@@ -30,7 +30,7 @@ def parse(arg):
         dee = split(arg[:curly_braces.span()[0]])
         patl = [i.strip(",") for i in dee]
         patl.append(curly_braces.group())
-        return pat1
+        return patl
 
 
 class HBNBCommand(cmd.Cmd):
@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """handles the EOF character"""
 
-        print("")
+        print()
         return True
 
     def do_create(self, arg):
@@ -125,6 +125,18 @@ class HBNBCommand(cmd.Cmd):
                 elif len(my_arg) == 0:
                     obje.append(obj._str__())
             print(obje)
+
+    def do_count(self, arg):
+        """
+        method that retrieve the number of
+        instances of a specified class.
+        """
+        arg2 = parse(arg)
+        count = 0
+        for obj in storage.all().values():
+            if arg2[0] == obj.__class__.__name__:
+                count += 1
+        print(count)
 
     def do_update(self, arg):
         """
