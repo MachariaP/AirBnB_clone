@@ -1,5 +1,5 @@
 ```markdown
-# <p align="center"><font size="+3">HBnB</font></p>
+## HBnB
 
 AirBnB clone.
 
