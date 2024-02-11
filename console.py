@@ -36,7 +36,7 @@ def parse(arg):
 class HBNBCommand(cmd.Cmd):
     """Defines the Holberton command line interpreter(hbnb)"""
 
-    prompt  = "(hbnb)"
+    prompt = "(hbnb)"
     __classes = {
             "BaseModel": BaseModel,
             "User": User,
@@ -47,25 +47,21 @@ class HBNBCommand(cmd.Cmd):
             "Review": Review
             }
 
-
     def do_nothing(self, arg):
         """function does nothing"""
 
         pass
-
 
     def do_quit(self, arg):
         """this function exits the program """
 
         return True
 
-
     def do_EOF(self, arg):
         """handles the EOF character"""
 
-        print ("")
+        print("")
         return True
-
 
     def do_create(self, arg):
         """This creates an instance and print id"""
@@ -79,9 +75,8 @@ class HBNBCommand(cmd.Cmd):
             print(eval(my_arg[0])().id)
             storage.save()
 
-
     def do_show(self, arg):
-        """ method that display string representation of 
+        """ method that display string representation of
         class instance of a certain id"""
 
         my_arg = parse(arg)
@@ -97,12 +92,11 @@ class HBNBCommand(cmd.Cmd):
         else:
             print(objdict["{}.{}".format(my_arg[0], my_arg[1])])
 
-
     def do_destroy(self, arg):
         """This prints all string representation of all instances.
         """
 
-        my_arg  = parse(arg)
+        my_arg = parse(arg)
         obj_dic = storage.all()
         if len(my_arg) == 0:
             print("** class name missing **")
@@ -116,7 +110,6 @@ class HBNBCommand(cmd.Cmd):
             del obj_dic["{}.{}".format(my_arg[0], my_arg[1])]
             storage.save()
 
-
     def do_all(self, arg):
         """This prints all string representation of all instances.
         """
@@ -128,11 +121,10 @@ class HBNBCommand(cmd.Cmd):
             obje = []
             for obj in storage.all().values():
                 if len(my_arg) > 0 and my_arg[0] == obj.__class__.__name__:
-                   obje.append(obj.__str__())
+                    obje.append(obj.__str__())
                 elif len(my_arg) == 0:
-                   obje.append(obj._str__())
+                    obje.append(obj._str__())
             print(obje)
-
 
     def do_update(self, arg):
         """
