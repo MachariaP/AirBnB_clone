@@ -12,6 +12,7 @@ from models.city import City
 from models.place import Place
 from models.review import Review
 
+
 class FileStorage:
     """This is the class for storing and retrieving data"""
 
