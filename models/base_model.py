@@ -8,7 +8,7 @@ class BaseModel:
     """
     class that defines the base attributes for other classes"""
 
-    def _init_(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         """
         constructor of a class
         initializes BaseModel with provided arguments"""
@@ -17,24 +17,25 @@ class BaseModel:
         if kwargs is not None and kwargs != {}:
             for key in kwargs:
                 if key == "created_at":
-                    self._dict_["created_at"] = datetime.strptime(
+                    self.__dict__["created_at"] = datetime.strptime(
                         kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
                 elif key == "updated_at":
-                    self._dict_["updated_at"] = datetime.strptime(
+                    self.__dict__["updated_at"] = datetime.strptime(
                         kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
                 else:
-                    self._dict_[key] = kwargs[key]
+                    self.__dict__[key] = kwargs[key]
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             storage.new(self)
 
-    def _str_(self):
+    def __str__(self):
         """Define string representation of BaseModel object
         """
 
-        return "[{}] ({}) {}".format(type(self)._name, self.id, self.dict_)
+        return "[{}] ({}) {}".\
+            format(type(self).__name__, self.id, self.__dict__)
 
     def save(self):
         """updates the public instance attribute updated_at"""
@@ -44,9 +45,10 @@ class BaseModel:
         storage.save()
 
     def to_dict(self):
-        """This returns a dictionary containing all keys/values of _dict_"""
-        my_dict = self._dict_.copy()
-        my_dict["_class"] = type(self).name_
+        """This returns a dictionary containing all keys/values of __dict__"""
+
+        my_dict = self.__dict__.copy()
+        my_dict["__class__"] = type(self).__name__
         my_dict["created_at"] = my_dict["created_at"].isoformat()
         my_dict["updated_at"] = my_dict["updated_at"].isoformat()
         return my_dict
