@@ -30,7 +30,7 @@ def parse(arg):
         dee = split(arg[:curly_braces.span()[0]])
         patl = [i.strip(",") for i in dee]
         patl.append(curly_braces.group())
-        return pat1
+        return patl
 
 
 class HBNBCommand(cmd.Cmd):
