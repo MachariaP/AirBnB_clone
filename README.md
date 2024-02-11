@@ -1,5 +1,3 @@
-Sure, here's the corrected markdown with the center-aligned and larger heading for "HBnB":
-
 ```markdown
 # <p align="center"><font size="+3">HBnB</font></p>
 
@@ -281,5 +279,3 @@ $ python3 unittest -m tests/test_console.py
 - **Phinehas Macharia** <[MachariaP](https://github.com/MachariaP)>
 - **Dinar Wanjiru** <[Dinarwanjiru](https://github.com/Dinarwanjiru)>
 ```
-
-This markdown should display the HBnB heading centered and larger, as well as correct the formatting of the tables and other sections.
