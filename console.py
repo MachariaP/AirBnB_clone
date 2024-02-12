@@ -47,6 +47,27 @@ class HBNBCommand(cmd.Cmd):
             "Review": Review
             }
 
+    # Override cmdloop to intercept empty line inputs
+    def cmdloop(self, intro=None):
+        """Repeatedly issue a prompt, accept input, parse an initial prefix
+        off the received input, and dispatch to action methods, passing them
+        the remainder of the line as argument.
+        """
+        while not self.quit:
+            try:
+                line = input(self.prompt)
+                if line.strip() == "":
+                    print("Empty line detected. Nothing will be executed.")
+                    continue  # Skip further processing for empty lines
+                else:
+                    self.onecmd(line)
+            except KeyboardInterrupt:
+                print("^C")
+                self.quit = True
+            except Exception as e:
+                print(e)
+                self.quit = True
+
     def do_nothing(self, arg):
         """function does nothing"""
 
@@ -123,7 +144,7 @@ class HBNBCommand(cmd.Cmd):
                 if len(my_arg) > 0 and my_arg[0] == obj.__class__.__name__:
                     obje.append(obj.__str__())
                 elif len(my_arg) == 0:
-                    obje.append(obj._str__())
+                    obje.append(obj.__str__())
             print(obje)
 
     def do_count(self, arg):
