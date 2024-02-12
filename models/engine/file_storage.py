@@ -29,13 +29,13 @@ class FileStorage:
         self.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
 
     def save(self):
-        """function that serializes __objects to the JSON file"""
+        """Serializes __objects to the JSON file (path: __file_path)"""
 
-        with open(self.__file_path, "w") as f:
-            j_dict = {}
-            for y, z in self.__objects.items():
-                j_dict[y] = z.to_dict()
-            json.dumps(j_dict, f)
+        j_dict = {}
+        for key, value in self.__objects.items():
+            j_dict[key] = value.to_dict()
+        with open(self.__file_path, 'w') as f:
+            json.dump(j_dict, f)
 
     def reload(self):
         """returns the valid attributes and their types for classname"""
