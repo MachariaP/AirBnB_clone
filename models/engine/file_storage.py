@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-""""Module for FileStorage class."""
-import os
-import datetime
+"""
+FileStorage class model
+"""
 import json
 
 from models.base_model import BaseModel
@@ -14,32 +14,45 @@ from models.review import Review
 
 
 class FileStorage:
-    """This is the class for storing and retrieving data"""
+    """
+    serializes instances to JSON file
+    also
+    deserializes JSON file to an instances
+    """
 
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """This returns the dictionary __objects"""
+        """
+        Returns dictionary set of __objects
+        """
         return self.__objects
 
     def new(self, obj):
-        """This sets in __objects the obj with key <obj class name>.id"""
-
+        """
+        function that sets in __objects
+        the `obj` with key <obj class name>.id
+        """
         self.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
 
     def save(self):
-        """Serializes __objects to the JSON file (path: __file_path)"""
-
-        j_dict = {}
-        for key, value in self.__objects.items():
-            j_dict[key] = value.to_dict()
-        with open(self.__file_path, 'w') as f:
-            json.dump(j_dict, f)
+        """
+        function that serializes set of
+        __objects to JSON file
+        """
+        with open(self.__file_path, mode="w") as f:
+            dict_storage = {}
+            for x, y in self.__objects.items():
+                dict_storage[x] = y.to_dict()
+            json.dump(dict_storage, f)
 
     def reload(self):
-        """returns the valid attributes and their types for classname"""
-
+        """
+        function that deserializes the JSON
+        file to __objects
+        nb: Only if it exists!
+        """
         try:
             with open(self.__file_path, encoding="utf-8") as f:
                 for obj in json.load(f).values():
