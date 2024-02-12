@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""program that contains the entry point of the command interpreter"""
+
+
 import cmd
 from models.base_model import BaseModel
 from models import storage
@@ -9,6 +13,7 @@ from models.city import City
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
+
 
 def parse(arg):
     curly_braces = re.search(r"\{(.*?)\}", arg)
@@ -27,13 +32,6 @@ def parse(arg):
         patl.append(curly_braces.group())
         return patl
 
-def process_input(user_input):
-    # Check if the input is empty
-    if not user_input:
-        return  # Return without executing any further actions
-
-    # Your existing code to process the input goes here
-    print(len(user_input))
 
 class HBNBCommand(cmd.Cmd):
     """Defines the Holberton command line interpreter(hbnb)"""
