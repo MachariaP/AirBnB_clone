@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """program that contains the entry point of the command interpreter"""
 
-
 import cmd
 from models.base_model import BaseModel
 from models import storage
@@ -16,21 +15,7 @@ from models.review import Review
 
 
 def parse(arg):
-    curly_braces = re.search(r"\{(.*?)\}", arg)
-    brackets = re.search(r"\[(.*?)\]", arg)
-    if curly_braces is None:
-        if brackets is None:
-            return [i.strip(",") for i in split(arg)]
-        else:
-            dee = split(arg[:brackets.span()[0]])
-            patl = [i.strip(",") for i in dee]
-            patl.append(brackets.group())
-            return patl
-    else:
-        dee = split(arg[:curly_braces.span()[0]])
-        patl = [i.strip(",") for i in dee]
-        patl.append(curly_braces.group())
-        return patl
+    return split(arg)
 
 
 class HBNBCommand(cmd.Cmd):
@@ -46,6 +31,36 @@ class HBNBCommand(cmd.Cmd):
             "Place": Place,
             "Review": Review
             }
+
+    def default(self, line):
+        """Catch commands if nothing else matches then."""
+        # print("DEF:::", line)
+        self._precmd(line)
+
+    def _precmd(self, line):
+        """Intercepts commands to test for class.syntax()"""
+        # print("PRECMD:::", line)
+        match = re.search(r"^(\w+)\.(update)\(([^)]*)\)$", line)
+        if not match:
+            return line
+        classname = match.group(1)
+        method = match.group(2)
+        args = match.group(3)
+
+        attr_and_value = ""
+        if method == "update":
+            match_dict = re.search('^({.*})$', args)
+            if match_dict:
+                self.update_dict(classname, match_dict.group(1))
+                return ""
+            match_attr_and_value = re.search(
+                '^("([^"]*)")?(?:, ("([^"]*)"))?$', args)
+            if match_attr_and_value:
+                attr_and_value = (match_attr_and_value.group(
+                    2) or "") + " " + (match_attr_and_value.group(4) or "")
+        command = method + " " + classname + " " + attr_and_value
+        self.onecmd(command)
+        return command
 
     def do_nothing(self, arg):
         """function does nothing"""
@@ -72,8 +87,9 @@ class HBNBCommand(cmd.Cmd):
         elif my_arg[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
-            print(eval(my_arg[0])().id)
-            storage.save()
+            obj = HBNBCommand.__classes[my_arg[0]]()
+            obj.save()
+            print(obj.id)
 
     def do_show(self, arg):
         """ method that display string representation of
@@ -121,22 +137,10 @@ class HBNBCommand(cmd.Cmd):
             obje = []
             for obj in storage.all().values():
                 if len(my_arg) > 0 and my_arg[0] == obj.__class__.__name__:
-                    obje.append(obj.__str__())
+                    obje.append(str(obj))
                 elif len(my_arg) == 0:
-                    obje.append(obj._str__())
+                    obje.append(str(obj))
             print(obje)
-
-    def do_count(self, arg):
-        """
-        method that retrieve the number of
-        instances of a specified class.
-        """
-        arg2 = parse(arg)
-        count = 0
-        for obj in storage.all().values():
-            if arg2[0] == obj.__class__.__name__:
-                count += 1
-        print(count)
 
     def do_update(self, arg):
         """
@@ -155,7 +159,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return False
         if "{}.{}".format(arg2[0], arg2[1]) not in objdict.keys():
-            print("** no istance found **")
+            print("** no instance found **")
             return False
         if len(arg2) == 2:
             print("** attribute name missing **")
