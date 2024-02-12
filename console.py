@@ -1,7 +1,3 @@
-#!/usr/bin/python3
-"""program that contains the entry point of the command interpreter"""
-
-
 import cmd
 from models.base_model import BaseModel
 from models import storage
@@ -13,7 +9,6 @@ from models.city import City
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
-
 
 def parse(arg):
     curly_braces = re.search(r"\{(.*?)\}", arg)
@@ -32,6 +27,13 @@ def parse(arg):
         patl.append(curly_braces.group())
         return patl
 
+def process_input(user_input):
+    # Check if the input is empty
+    if not user_input:
+        return  # Return without executing any further actions
+
+    # Your existing code to process the input goes here
+    print(len(user_input))
 
 class HBNBCommand(cmd.Cmd):
     """Defines the Holberton command line interpreter(hbnb)"""
@@ -46,27 +48,6 @@ class HBNBCommand(cmd.Cmd):
             "Place": Place,
             "Review": Review
             }
-
-    # Override cmdloop to intercept empty line inputs
-    def cmdloop(self, intro=None):
-        """Repeatedly issue a prompt, accept input, parse an initial prefix
-        off the received input, and dispatch to action methods, passing them
-        the remainder of the line as argument.
-        """
-        while not self.quit:
-            try:
-                line = input(self.prompt)
-                if line.strip() == "":
-                    print("Empty line detected. Nothing will be executed.")
-                    continue  # Skip further processing for empty lines
-                else:
-                    self.onecmd(line)
-            except KeyboardInterrupt:
-                print("^C")
-                self.quit = True
-            except Exception as e:
-                print(e)
-                self.quit = True
 
     def do_nothing(self, arg):
         """function does nothing"""
@@ -144,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
                 if len(my_arg) > 0 and my_arg[0] == obj.__class__.__name__:
                     obje.append(obj.__str__())
                 elif len(my_arg) == 0:
-                    obje.append(obj.__str__())
+                    obje.append(obj._str__())
             print(obje)
 
     def do_count(self, arg):
