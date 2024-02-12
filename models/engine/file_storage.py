@@ -38,23 +38,11 @@ class FileStorage:
             json.dump(j_dict, f)
 
     def reload(self):
+        """returns the valid attributes and their types for classname"""
 
-        """Load JSON data from the file"""
         try:
-            with open(self.__file_path, 'r', encoding='utf-8') as f:
-                data = f.read()
-            if data:
-                json_data = json.loads(data)
-
-                for obj in json_data.values():
-                    cls_name = obj['__class__']
-                    cls = models.classes.get(cls_name)
-                    if cls:
-                        instance = cls(**obj)
-                        key = "{}.{}".format(cls_name, instance.id)
-                        self.__object[key] = instance
-
+            with open(self.__file_path, encoding="utf-8") as f:
+                for obj in json.load(f).values():
+                    self.new(eval(obj["__class__"])(**obj))
         except FileNotFoundError:
-            pass
-        except json.JSONDecodeError:
-            pass
+            return
