@@ -147,8 +147,8 @@ class TestConsoleClass(unittest.TestCase):
         """ tests whether the id is does not exist """
         with patch('sys.stdout', new=StringIO()) as val:
             HBNBCommand().onecmd('destroy BaseModel')
-            self.assertFalse(val.getvalue() == "**instance
-                             id unavailable **\n")
+            self.assertFalse(val.getvalue() == "**instance 
+                    id unavailable **\n")
 
     def test_destroy_notfound(self):
         """ tests whether the id belongs to an instance """
