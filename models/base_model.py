@@ -1,57 +1,49 @@
 #!/usr/bin/python3
-"""BaseModel class"""
+"""Defines the BaseModel class"""
+import models
 from uuid import uuid4
 from datetime import datetime
 
 
 class BaseModel:
-    """
-    class that defines the base attributes for other classes"""
+    """Represents the BaseModel of the HBnB project."""
 
     def __init__(self, *args, **kwargs):
+        """Initialize a new BaseModel.
+        Args:
+            *args (any): Unused.
+            **kwargs (dict): Key/value pairs of attributes.
         """
-        constructor of a class
-        initializes BaseModel with provided arguments"""
-
-        from models import storage
-        if kwargs is not None and kwargs != {}:
-            for key in kwargs:
-                if key == "created_at":
-                    self.__dict__["created_at"] = datetime.strptime(
-                        kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
-                elif key == "updated_at":
-                    self.__dict__["updated_at"] = datetime.strptime(
-                        kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
+        tform = "%Y-%m-%dT%H:%M:%S.%f"
+        self.id = str(uuid4())
+        self.created_at = datetime.today()
+        self.updated_at = datetime.today()
+        if len(kwargs) != 0:
+            for k, v in kwargs.items():
+                if k == "created_at" or k == "updated_at":
+                    self.__dict__[k] = datetime.strptime(v, tform)
                 else:
-                    self.__dict__[key] = kwargs[key]
+                    self.__dict__[k] = v
         else:
-            self.id = str(uuid4())
-            self.created_at = self.updated_at = datetime.now()
-            time.sleep(0.1)
-            self.update_at = datetime.now()
-            storage.new(self)
-
-    def __str__(self):
-        """Define string representation of BaseModel object
-        """
-
-        return "[{}] ({}) {}".\
-            format(type(self).__name__, self.id, self.__dict__)
+            models.storage.new(self)
 
     def save(self):
-        """updates the public instance attribute updated_at"""
-
-        from models import storage
-        self.updated_at = datetime.now()
-        storage.save()
+        """Update updated_at with the current datetime."""
+        self.updated_at = datetime.today()
+        models.storage.save()
 
     def to_dict(self):
-        """This returns a dictionary containing all keys/values of __dict__"""
+        """Return the dictionary of the BaseModel instance.
+        Includes the key/value pair __class__ representing
+        the class name of the object.
+        """
+        rdict = self.__dict__.copy()
+        rdict["created_at"] = self.created_at.isoformat()
+        rdict["updated_at"] = self.updated_at.isoformat()
+        rdict["__class__"] = self.__class__.__name__
+        return rdict
 
-        dict_1 = self.__dict__.copy()
-        dict_1["__class__"] = self.__class__.__name__
-        for i, j in self.__dict__.items():
-            if i in ("created_at", "updated_at"):
-                j = self.__dict__[i].isoformat()
-                dict_1[i] = j
-        return dict_1
+    def __str__(self):
+        """Return the print/str representation of the BaseModel instance."""
+        clname = self.__class__.__name__
+        return "[{}] ({}) {}".format(clname, self.id, self.__dict__)
