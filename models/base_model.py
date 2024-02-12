@@ -47,8 +47,10 @@ class BaseModel:
     def to_dict(self):
         """This returns a dictionary containing all keys/values of __dict__"""
 
-        my_dict = self.__dict__.copy()
-        my_dict["__class__"] = type(self).__name__
-        my_dict["created_at"] = my_dict["created_at"].isoformat()
-        my_dict["updated_at"] = my_dict["updated_at"].isoformat()
-        return my_dict
+        dict_1 = self.__dict__.copy()
+        dict_1["__class__"] = self.__class__.__name__
+        for i, j in self.__dict__.items():
+            if i in ("created_at", "updated_at"):
+                j = self.__dict__[i].isoformat()
+                dict_1[i] = j
+        return dict_1
