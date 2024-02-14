@@ -50,22 +50,13 @@ class FileStorage:
 
     def reload(self):
         """
-        Deserializes the JSON file to __objects.
-        Only if it exists.
+        function that deserializes the JSON
+        file to __objects
+        nb: Only if it exists!
         """
         try:
             with open(self.__file_path, encoding="utf-8") as f:
-                data = json.load(f)
-                for obj_data in data.values():
-                    class_name = obj_data.get("__class__")
-                    if class_name:
-                        cls = getattr(models, class_name, None)
-                        if cls:
-                            obj_instance = cls(**obj_data)
-                            self.new(obj_instance)
-                        else:
-                            logging.warning(f"Class {class_name} not found.")
-                    else:
-                        logging.warning("Class name not found in JSON data.")
+                for obj in json.load(f).values():
+                    self.new(eval(obj["__class__"])(**obj))
         except FileNotFoundError:
-            logging.warning("JSON file not found.")
+            return
