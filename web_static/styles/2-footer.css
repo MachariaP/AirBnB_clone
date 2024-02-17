@@ -1,0 +1,14 @@
+/*
+ * === Footer Styles ===
+ */
+/* Apply footer styles to the body */
+footer {
+	text-align:center;
+	background-color: #0F0;
+	bottom: 0;
+	line-height: 60px;
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	width: 100%;
+}
