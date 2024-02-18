@@ -3,7 +3,7 @@
  */
 /* Apply footer styles to the body */
 footer {
-	text-align:center;
+	align-items: center;
 	background-color: #0F0;
 	bottom: 0;
 	line-height: 60px;
