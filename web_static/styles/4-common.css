@@ -1,0 +1,28 @@
+/* Remove padding and margin */
+html {
+    box-sizing: border-box;
+}
+
+/* Reset margin and padding for all elements */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+/* Set default styles for the body */
+body {
+    margin: 0;
+    padding: 0;
+    color: #484848;
+    font-size: 14px;
+    font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Center the container and limit its width */
+.container {
+    max-width: 1000px;
+    margin: 30px auto; /* Center the container horizontally and add 30px top and bottom margin */
+}
