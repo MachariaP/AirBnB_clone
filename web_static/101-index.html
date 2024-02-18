@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8" />
+    <title>AirBnB Clone</title>
+    
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/4-common.css">
+    <link rel="stylesheet" href="styles/3-header.css">
+    <link rel="stylesheet" href="styles/3-footer.css">
+    <link rel="stylesheet" href="styles/6-filters.css">
+    <link rel="stylesheet" href="styles/101-places.css">
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+    <link rel="icon" href="images/icon.png">
+    
+    <body>
+        <header>
+        </header>
+
+        <div class="container">
+            <section class="filters">
+                <button>Search</button>
+                <div class="locations">
+                    <h3>States</h3>
+                    <h4>New York, Virginia..</h4>
+                    <div class="popover">
+                        <ul>
+                            <li>
+                                <h2>New York</h2>
+                                <ul>
+                                    <li>Buffalo</li>
+                                    <li>New York City</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h2>Virginia</h2>
+                                <ul>
+                                    <li>Charlottesville</li>
+                                    <li>Richmond</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="amenities">
+                    <h3>Amenities</h3>
+                    <h4>Internet, Kitchen..</h4>
+                    <div class="popover">
+                        <ul>
+                            <li>Internet</li>
+                            <li>TV</li>
+                            <li>Kitchen</li>
+                            <li>Iron</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Places section -->
+
+            <section class="places">
+                <h1>Places</h1>
+
+                <article>
+                    <div class="name_and_price">
+                        <h2>Cottage</h2>
+                        <div class="price_by_night">&#36;75</div>
+                    </div>
+                    <div class="information">
+                        <div class="max_guest">
+                          <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+                          <br>1 Guest
+                        </div>
+                        <div class="number_rooms">
+                          <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+                          <br>1 Room
+                        </div>
+                        <div class="number_bathrooms">
+                          <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+                          <br>2 Bathrooms
+                        </div>
+                    </div>
+                    <div class="user"><strong>Owner:</strong> Theta Beta Bois</div>
+                    <div class="description">
+                        So, we've got this old couch that's currently going unused in our
+                        frat house (Theta Beta Bois boiiiii!) We know trying to find school
+                        housing sucks, right? So, like, we thought, you know what would be
+                        a good idea? We should offer our couch for a student in need! Join
+                        us bro, we're the chillest bros around, and you know we throw the
+                        littest Friday night bangers!
+                    </div>
+
+                    <div class="amenities">
+                        <h2>Amenities</h2>
+                        <ul>
+                          <li>
+                            <i class="fa fa-heart" aria-hidden="true"></i>
+                            <p>Love</p>
+                          </li>
+                        </ul>
+                    </div>
+            
+                    <div class="reviews">
+                        <h2>3 Reviews</h2>
+                        <h3>From Michel the January 2 2018</h3>
+                        <ul>
+                          <li>
+                            <p>
+                              My love. It is me. I'm coming.
+                            </p>
+                          </li>
+                        </ul>
+                        <h3>From Jean the March 23 2018</h3>
+                        <ul>
+                          <li>
+                            <p>
+                              You had me at "Hi there." And then you went and said you
+                              prepared two boiled eggs.
+                            </p>
+                          </li>
+                        </ul>
+                        <h3>From Peter the May 1 2018</h3>
+                        <ul>
+                          <li>
+                            <p>
+                              I thought I would never find you, yet here I am, fresh
+                              from tending to my avocado trees, feeling as I've never
+                              felt before in my life.
+                            </p>
+                          </li>
+                        </ul>
+                    </div>
+
+                </article>
+
+                <article>
+                    <div class="name_and_price">
+                        <h2>Apartment</h2>
+                        <div class="price_by_night">&#36;100</div>
+                    </div>
+                    <div class="information">
+                        <div class="max_guest">
+                          <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+                          <br>2 Guests
+                        </div>
+                        <div class="number_rooms">
+                          <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+                          <br>2 Rooms
+                        </div>
+                        <div class="number_bathrooms">
+                          <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+                          <br>1 Bathroom
+                        </div>
+                    </div>
+                    <div class="user"><strong>Owner:</strong> Delta Gamma Gals</div>
+                    <div class="description">
+                        A cozy apartment in a friendly neighborhood! We, the Delta Gamma Gals, offer
+                        this comfy place to students who need a peaceful space for study or relaxation.
+                        You'll love our vibrant community and occasional weekend hangouts.
+                    </div>
+                    <div class="amenities">
+                        <h2>Amenities</h2>
+                        <ul>
+                            <li>
+                                <i class="fa fa-wifi" aria-hidden="true"></i>
+                                <p>WiFi</p>
+                            </li>
+                            <li>
+                                <i class="fa fa-tv" aria-hidden="true"></i>
+                                <p>TV</p>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div class="reviews">
+                        <h2>1 Review</h2>
+                        <h3>From Peter the May 1 2018</h3>
+                        <ul>
+                          <li>
+                            <p>
+                              I thought I would never find you, yet here I am, fresh
+                              from tending to my avocado trees, feeling as I've never
+                              felt before in my life.
+                            </p>
+                          </li>
+                        </ul>
+                    </div>
+                </article>
+                
+                <article>
+                    <div class="name_and_price">
+                        <h2>Beach House</h2>
+                        <div class="price_by_night">&#36;250</div>
+                    </div>
+                    <div class="information">
+                        <div class="max_guest">
+                          <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+                          <br>4 Guests
+                        </div>
+                        <div class="number_rooms">
+                          <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+                          <br>3 Rooms
+                        </div>
+                        <div class="number_bathrooms">
+                          <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+                          <br>2 Bathrooms
+                        </div>
+                    </div>
+                    <div class="user"><strong>Owner:</strong> Ocean View Rentals</div>
+                    <div class="description">
+                        Experience a serene beachfront lifestyle! Our beach house is perfect for a
+                        family vacation or a getaway with friends. Enjoy stunning sunsets and the
+                        sound of waves from your cozy retreat.
+                    </div>
+                    <div class="amenities">
+                        <h2>Amenities</h2>
+                        <ul>
+                            <li>
+                                <i class="fa fa-tree" aria-hidden="true"></i>
+                                <p>Surrounded by Nature</p>
+                            </li>
+                            <li>
+                                <i class="fa fa-fire" aria-hidden="true"></i>
+                                <p>Outdoor Fireplace</p>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div class="reviews">
+                        <h2>3 Reviews</h2>
+                        <h3>From Sophia on August 10, 2020</h3>
+                        <ul>
+                          <li>
+                            <p>
+                                The interior design was fabulous! Every detail added to the overall experience.
+                            </p>
+                          </li>
+                        </ul>
+                        <h3>From Lucas on November 30, 2021</h3>
+                        <ul>
+                          <li>
+                            <p>
+                                Great place for a family vacation! Plenty of space and activities nearby
+                            </p>
+                          </li>
+                        </ul>
+                        <h3>From Olivia on February 18, 2022</h3>
+                        <ul>
+                          <li>
+                            <p>
+                                The host was incredibly friendly and helpful. Made our stay very enjoyable!
+                            </p>
+                          </li>
+                        </ul>
+                    </div>
+                </article>
+                
+                <article>
+                    <div class="name_and_price">
+                        <h2>Treehouse</h2>
+                        <div class="price_by_night">&#36;150</div>
+                    </div>
+                    <div class="information">
+                        <div class="max_guest">
+                          <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+                          <br>3 Guests
+                        </div>
+                        <div class="number_rooms">
+                          <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+                          <br>1 Room
+                        </div>
+                        <div class="number_bathrooms">
+                          <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+                          <br>1 Bathroom
+                        </div>
+                    </div>
+                    <div class="user"><strong>Owner:</strong> Green Escape Retreats</div>
+                    <div class="description">
+                        Escape to nature with our charming treehouse accommodation. It's a perfect
+                        sanctuary for anyone seeking peace, surrounded by lush greenery and tranquil
+                        surroundings.
+                    </div>
+                    <div class="amenities">
+                        <h2>Amenities</h2>
+                        <ul>
+                            <li>
+                                <i class="fa fa-swimming-pool" aria-hidden="true"></i>
+                                <p>Swimming Pool</p>
+                            </li>
+                            <li>
+                                <i class="fa fa-beach" aria-hidden="true"></i>
+                                <p>Beachfront</p>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div class="reviews">
+                        <h2>2 Review2</h2>
+                        <h3>From Emily on September 25, 2019</h3>
+                        <ul>
+                          <li>
+                            <p>
+                                The view from the property was breathtaking! Waking up to that scenery was unforgettable.
+                            </p>
+                          </li>
+                        </ul>
+                        <h3>From David on April 4, 2022:</h3>
+                        <ul>
+                          <li>
+                            <p>
+                                Had a wonderful stay! The host was accommodating, and the location was convenient.
+                            </p>
+                          </li>
+                        </ul>
+                    </div>
+                </article>
+                
+                <article>
+                    <div class="name_and_price">
+                        <h2>Luxury Villa</h2>
+                        <div class="price_by_night">&#36;500</div>
+                    </div>
+                    <div class="information">
+                        <div class="max_guest">
+                          <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+                          <br>6 Guests
+                        </div>
+                        <div class="number_rooms">
+                          <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+                          <br>4 Rooms
+                        </div>
+                        <div class="number_bathrooms">
+                          <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+                          <br>3 Bathrooms
+                        </div>
+                    </div>
+                    <div class="user"><strong>Owner:</strong> Elite Living Estates</div>
+                    <div class="description">
+                        Indulge in luxury and elegance with our splendid villa. This opulent abode
+                        offers exquisite amenities and stunning views, providing an unforgettable
+                        experience for the discerning traveler.
+                    </div>
+                    <div class="amenities">
+                        <h2>Amenities</h2>
+                        <ul>
+                            <li>
+                                <i class="fa fa-glass-cheers" aria-hidden="true"></i>
+                                <p>Bar</p>
+                            </li>
+                            <li>
+                                <i class="fa fa-hot-tub" aria-hidden="true"></i>
+                                <p>Hot Tub</p>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div class="reviews">
+                        <h2>2 Reviews</h2>
+                        <h3>From Sarah on May 15, 2020</h3>
+                        <ul>
+                          <li>
+                            <p>
+                                Absolutely loved the ambiance! Cozy and serene. Perfect for a weekend getaway.
+                            </p>
+                          </li>
+                        </ul>
+                        <h3>From Alex on July 7, 2021</h3>
+                        <ul>
+                          <li>
+                            <p>
+                                The amenities were top-notch! Everything was clean and well-maintained.
+                            </p>
+                          </li>
+                        </ul>
+                    </div>
+                </article>
+                
+            </section>
+        </div>
+
+        <footer >
+        Best School
+        </footer>
+    </body>
+</html>
